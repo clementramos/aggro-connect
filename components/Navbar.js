@@ -21,7 +21,7 @@ export default function Navbar() {
             href={item.href}
             className={classNames(
               item.current
-                ? "bg-white text-black"
+                ? "bg-white text-white"
                 : "text-white font-semibold hover:bg-white hover:text-black",
               "px-3 py-2 rounded-md text-xl font-medium"
             )}
