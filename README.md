@@ -1,6 +1,6 @@
 # Agro Connect
 
-![AGGRO CONNECT - LIGHT](https://github.com/clementramos/aggro-connect/assets/81080837/6f907c1e-ab00-4c1b-8d89-2aa90dc6abda)
+![AGGRO CONNECT - LIGHT](https://github.com/clementramos/aggro-connect/assets/81080837/aa3f339c-96c3-4266-94e6-67f6a4595397)
 
 Agro Connect is an innovative project aimed at connecting farmers with citizens living in urban areas. This project seeks to bridge the gap between rural agricultural communities and urban consumers, creating a direct channel for the exchange of fresh produce, agricultural products, and knowledge. By leveraging technology and efficient logistics, Agro Connect aims to revolutionize the way people access locally sourced, healthy food.
 
