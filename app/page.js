@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex max-h-screen flex-col items-center justify-between p-24 bg-black">
+      <main className="flex max-h-screen flex-col items-center justify-between py-24 pr-24 bg-black">
         {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex bg-black">
           <p className="fixed top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
             Page en cours de construction 🏗️
@@ -31,19 +31,19 @@ export default function Home() {
         </div> */}
         <div className="grid grid-cols-2 w-full flex items-start">
           <Image
-            className=""
+            className="mx-auto"
             src="/AGGRO CONNECT - LIGHT.png"
             alt="Aggro connect Logo"
-            width={555}
+            width={350}
             height={37}
             priority
           />
           <div>
-            <p className="text-5xl font-bold mb-6">AGGRO CONNECT</p>
-            <p className="text-3xl font-semibold mb-3">
+            <p className="text-3xl font-bold mb-3">AGGRO CONNECT</p>
+            <p className="text-xl font-semibold mb-1">
               Votre nouvelle connexion avec le monde agricole.
             </p>
-            <p className="text-xl">
+            <p className="text-lg text-justify">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
               quae ab illo inventore veritatis et quasi architecto beatae vitae
@@ -59,7 +59,7 @@ export default function Home() {
               en savoir plus
             </button>{" "}
             <Image
-              className="left-0"
+              className="mx-auto"
               src="/Champ.svg"
               alt="Aggro connect Logo"
               width={500}

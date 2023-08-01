@@ -23,7 +23,7 @@ export default function Navbar() {
               item.current
                 ? "bg-white text-black"
                 : "text-white font-semibold hover:bg-white hover:text-black",
-              "px-3 py-2 rounded-md text-2xl font-medium"
+              "px-3 py-2 rounded-md text-xl font-medium"
             )}
             aria-current={item.current ? "page" : undefined}
           >
