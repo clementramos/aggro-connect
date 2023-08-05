@@ -72,7 +72,7 @@ export default function Homepage() {
       </div>
       <div
         id="concept"
-        className="flex flex-col items-start justify-start bg-white bg-cover bg-no-repeat pt-12"
+        className="h-screen flex flex-col items-start justify-start bg-white bg-cover bg-no-repeat pt-12"
       >
         <div className="h-screen px-24">
           <p className="uppercase font-bold text-3xl mb-3">le concept</p>
@@ -94,7 +94,7 @@ export default function Homepage() {
           </p>
           <div className="grid grid-cols-3 gap-4">
             <button className="group px-5 py-4 transition-colors mt-12 flex w-[250px] h-[60px] justify-center items-center text-xl bg-orange-aggro uppercase font-bold rounded-full hover:bg-slate-100">
-              <Link href="#concept">ouvrir la carte</Link>
+              <Link href="/map">ouvrir la carte</Link>
               <span className="ml-1 inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                 -&gt;
               </span>

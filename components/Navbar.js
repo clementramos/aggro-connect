@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const navigation = [
   { name: "Accueil", href: "/", current: true },
-  { name: "Le concept", href: "#concept", current: false },
-  { name: "Carte", href: "/", current: false },
+  // { name: "Le concept", href: "#concept", current: false },
+  { name: "Carte", href: "/map", current: false },
   { name: "Compte", href: "/", current: false },
 ];
 
@@ -14,7 +14,7 @@ function classNames(...classes) {
 export default function Navbar() {
   return (
     <div className="w-full h-[75px] bg-orange-aggro uppercase">
-      <div className="grid grid-cols-4 gap-4 flex items-center text-center h-full">
+      <div className="grid grid-cols-3 gap-4 flex items-center text-center h-full">
         {navigation.map((item) => (
           <a
             key={item.name}
