@@ -82,7 +82,7 @@ export default function Login() {
               <hr class="w-full bg-black h-0.5" />
             </div>
 
-            <form className="column max-w-5xl">
+            <form className="column max-w-5xl" action="/auth/login" method="post">
               <label
                 htmlFor="email"
                 className="text-left block text-base font-medium text-black"
