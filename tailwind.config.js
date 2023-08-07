@@ -16,7 +16,6 @@ module.exports = {
     },
     colors: {
       'orange-aggro': "#E7B10A",
-
     },
   },
   plugins: [],
