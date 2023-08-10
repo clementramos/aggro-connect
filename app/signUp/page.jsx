@@ -1,40 +1,29 @@
 "use client";
 import Navbar from "@/components/Navbar";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import Image from "next/image";
+import signUp from "@/firebase/auth/signup";
+import { useRouter } from "next/router";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-  const supabase = createClientComponentClient();
 
-  const handleSignUp = async () => {
-    await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
-      },
-    });
-    router.refresh();
-  };
+  const [name, setName] = React.useState('')
+  const [lastName, setlastName] = React.useState('')
+  const [city, setcity] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const router = useRouter()
 
-  const handleSignIn = async () => {
-    await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    router.refresh();
-  };
+  const handleForm = async (event) => {
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.refresh();
-  };
+    const { result, error } = await signUp(name, lastName, city, email, password);
 
+    if (error ) {
+      return console.log(error)
+    }
+    console.log(result)
+    return router.push("/account")
+  }
+  
   return (
     <>
       <Navbar />
@@ -50,21 +39,21 @@ export default function Login() {
           />
           <div className="bg-white shadow-2xl rounded w-1/4 p-10">
             <p className="text-3xl text-left font-black w-fit">
-              Connexion à votre compte
+              Création de compte
             </p>
             <p className="pb-10 text-md text-left font-thin w-fit">
-              Pas de compte ?{" "}
+              Déja un compte ?{" "}
               <a
-                href="signUp"
+                href="signIn"
                 className="hover:underline decoration-orange-aggro hover:text-orange-aggro font-medium"
               >
-                Créez-en un ici.
+                Connectez-vous ici.
               </a>
             </p>
             <button
               aria-label="Continue with google"
               role="button"
-              class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
+              class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mb-6"
             >
               <img
                 src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg2.svg"
@@ -72,6 +61,21 @@ export default function Login() {
               />
               <p class="text-base font-medium ml-4 text-gray-700">
                 Connexion avec Google
+              </p>
+            </button>
+            <button
+              aria-label="Continue with apple"
+              role="button"
+              class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
+            >
+              <Image 
+              src="/apple-logo.png"
+              alt="apple"
+              width={20}
+              height={20}
+              />
+              <p class="text-base font-medium ml-4 text-gray-700">
+                Connexion avec Apple
               </p>
             </button>
             <div class="w-96 flex items-center justify-between py-5 z-50">
