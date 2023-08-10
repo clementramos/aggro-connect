@@ -5,25 +5,29 @@ import signUp from "@/firebase/auth/signup";
 import { useRouter } from "next/router";
 
 export default function Login() {
-
-  const [name, setName] = React.useState('')
-  const [lastName, setlastName] = React.useState('')
-  const [city, setcity] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const router = useRouter()
+  const [name, setName] = React.useState("");
+  const [lastName, setlastName] = React.useState("");
+  const [city, setCity] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const router = useRouter();
 
   const handleForm = async (event) => {
+    const { result, error } = await signUp(
+      name,
+      lastName,
+      city,
+      email,
+      password
+    );
 
-    const { result, error } = await signUp(name, lastName, city, email, password);
-
-    if (error ) {
-      return console.log(error)
+    if (error) {
+      return console.log(error);
     }
-    console.log(result)
-    return router.push("/account")
-  }
-  
+    console.log(result);
+    return router.push("/account");
+  };
+
   return (
     <>
       <Navbar />
@@ -68,12 +72,7 @@ export default function Login() {
               role="button"
               class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
             >
-              <Image 
-              src="/apple-logo.png"
-              alt="apple"
-              width={20}
-              height={20}
-              />
+              <Image src="/apple-logo.png" alt="apple" width={20} height={20} />
               <p class="text-base font-medium ml-4 text-gray-700">
                 Connexion avec Apple
               </p>
@@ -86,7 +85,52 @@ export default function Login() {
               <hr class="w-full bg-black h-0.5" />
             </div>
 
-            <form className="column max-w-5xl">
+            <form className="column max-w-5xl" onSubmit={handleForm}>
+              <label
+                htmlFor="name"
+                className="text-left block text-base font-medium text-black"
+              >
+                <p className="pb-2">Nom :</p>
+                <input
+                  className="focus:outline-none focus:ring focus:border-none focus:ring-orange-aggro py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
+                  required
+                  type="name"
+                  name="name"
+                  id="name"
+                  placeholder="aggro-connect@mail.com"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label
+                htmlFor="lastName"
+                className="text-left block text-base font-medium text-black"
+              >
+                <p className="pb-2">Prénom :</p>
+                <input
+                  className="focus:outline-none focus:ring focus:border-none focus:ring-orange-aggro py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
+                  required
+                  type="lastName"
+                  name="lastName"
+                  id="lastName"
+                  placeholder="aggro-connect@mail.com"
+                  onChange={(e) => setlastName(e.target.value)}
+                />
+              </label>
+              <label
+                htmlFor="city"
+                className="text-left block text-base font-medium text-black"
+              >
+                <p className="pb-2">Ville :</p>
+                <input
+                  className="focus:outline-none focus:ring focus:border-none focus:ring-orange-aggro py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
+                  required
+                  type="city"
+                  name="city"
+                  id="city"
+                  placeholder="aggro-connect@mail.com"
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </label>
               <label
                 htmlFor="email"
                 className="text-left block text-base font-medium text-black"
@@ -97,7 +141,7 @@ export default function Login() {
                   required
                   type="email"
                   name="email"
-                  id="txtEmail"
+                  id="email"
                   placeholder="aggro-connect@mail.com"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -112,7 +156,7 @@ export default function Login() {
                   required
                   type="password"
                   name="password"
-                  id="txtPassword"
+                  id="password"
                   placeholder="Mot de passe"
                   onChange={(e) => setPassword(e.target.value)}
                 />
