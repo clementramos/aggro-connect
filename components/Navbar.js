@@ -5,7 +5,7 @@ const navigation = [
   { name: "Accueil", href: "/", current: true },
   // { name: "Le concept", href: "#concept", current: false },
   { name: "Carte", href: "/map", current: true },
-  { name: "Compte", href: "/", current: true },
+  { name: "Compte", href: "/signUp", current: true },
 ];
 
 function classNames(...classes) {

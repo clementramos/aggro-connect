@@ -1,8 +1,9 @@
 "use client";
+import React from "react"
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import signUp from "@/firebase/auth/signup";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [name, setName] = React.useState("");
@@ -41,7 +42,7 @@ export default function Login() {
             className="mx-auto mb-10 px-5"
             loading="lazy"
           />
-          <div className="bg-white shadow-2xl rounded w-1/4 p-10">
+          <div className="bg-white shadow-2xl rounded w-1/2 p-10">
             <p className="text-3xl text-left font-black w-fit">
               Création de compte
             </p>
@@ -59,12 +60,14 @@ export default function Login() {
               role="button"
               class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mb-6"
             >
-              <img
+              <Image
                 src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg2.svg"
                 alt="google"
+                width={20}
+                height={20}
               />
               <p class="text-base font-medium ml-4 text-gray-700">
-                Connexion avec Google
+                Google
               </p>
             </button>
             <button
@@ -74,10 +77,10 @@ export default function Login() {
             >
               <Image src="/apple-logo.png" alt="apple" width={20} height={20} />
               <p class="text-base font-medium ml-4 text-gray-700">
-                Connexion avec Apple
+                Apple
               </p>
             </button>
-            <div class="w-96 flex items-center justify-between py-5 z-50">
+            <div class="w-full flex items-center justify-between py-5 z-50">
               <hr class="w-full bg-black h-0.5" />
               <p class="text-base font-medium leading-4 px-2.5 text-black">
                 OU
