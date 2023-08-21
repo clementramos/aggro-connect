@@ -1,4 +1,3 @@
-"use client"
 import "./globals.css";
 import { AuthContextProvider } from "./context/AuthContext";
 import { Inter } from "next/font/google";
@@ -15,7 +14,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 
-  const [loading, setLoading] = React.useState(true);
 
   return (
     <html lang="en" className="scroll-smooth">
@@ -24,7 +22,6 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         <AuthContextProvider>{children}
-        {loading ? <div classname="text-4xl text-center">Chargement...</div> : children}
         </AuthContextProvider>
       </body>
     </html>
