@@ -4,9 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import Map from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoiY2xlbWVudHIzNCIsImEiOiJjbGxsdzM2aXIyOHdmM2RwcW42eGwyc3p5In0.jsqoP0F6_71xbGbpGtBKBg";
 
 export default function Homepage() {
   const router = useRouter();
+  <>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </>;
   return (
     <>
       <Navbar />
@@ -30,14 +44,40 @@ export default function Homepage() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-12 w-screen py-20 px-12">
-            <div className="bg-orange-aggro">
-              <iframe
+            <div className="">
+              <Map
+                initialViewState={{
+                  latitude: 43.6,
+                  longitude: 3.83,
+                  zoom: 14,
+                }}
+                classNames="w-fit h-fit"
+                mapStyle="mapbox://styles/mapbox/streets-v9"
+                mapboxAccessToken={MAPBOX_TOKEN}
+              ></Map>
+              {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46156.885407463065!2d3.751516842727845!3d43.69381019443139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6aa35e69c57ef%3A0x62561cee376dd28d!2sPoissonnerie%20Gaillard!5e0!3m2!1sfr!2sfr!4v1691225913056!5m2!1sfr!2sfr"
                 className="w-full h-full"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+              ></iframe> */}
+              {/* <MapContainer
+                center={[51.505, -0.09]}
+                zoom={13}
+                scrollWheelZoom={false}
+                height="400px"
+              >
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[51.505, -0.09]}>
+                  <Popup>
+                    A pretty CSS3 popup. <br /> Easily customizable.
+                  </Popup>
+                </Marker>
+              </MapContainer> */}
             </div>
             <div className="">
               <div className="grid grid-cols-2 w-fit">

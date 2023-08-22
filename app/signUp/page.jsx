@@ -6,18 +6,18 @@ import signUp from "@/firebase/auth/signup";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const [name, setName] = React.useState("");
-  const [lastName, setlastName] = React.useState("");
-  const [city, setCity] = React.useState("");
+  // const [name, setName] = React.useState("");
+  // const [lastName, setlastName] = React.useState("");
+  // const [city, setCity] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const router = useRouter();
 
   const handleForm = async (event) => {
     const { result, error } = await signUp(
-      name,
-      lastName,
-      city,
+      // name,
+      // lastName,
+      // city,
       email,
       password
     );
@@ -89,7 +89,7 @@ export default function Login() {
             </div>
 
             <form className="column max-w-5xl" onSubmit={handleForm}>
-              <label
+              {/* <label
                 htmlFor="name"
                 className="text-left block text-base font-medium text-black"
               >
@@ -133,7 +133,7 @@ export default function Login() {
                   placeholder="aggro-connect@mail.com"
                   onChange={(e) => setCity(e.target.value)}
                 />
-              </label>
+              </label> */}
               <label
                 htmlFor="email"
                 className="text-left block text-base font-medium text-black"
