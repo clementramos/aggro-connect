@@ -1,26 +1,27 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import Map from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoiY2xlbWVudHIzNCIsImEiOiJjbGxsdzM2aXIyOHdmM2RwcW42eGwyc3p5In0.jsqoP0F6_71xbGbpGtBKBg";
+const UserLocation = () => {
+  const [position, setPosition] = useState(null);
+  const MAPBOX_TOKEN = "pk.eyJ1IjoiY2xlbWVudHIzNCIsImEiOiJjbGxsdzM2aXIyOHdmM2RwcW42eGwyc3p5In0.jsqoP0F6_71xbGbpGtBKBg";
 
-export default function Homepage() {
-  const router = useRouter();
-  <>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-  </>;
+  const successCallback = (position) => {
+    setPosition(position.coords);
+  };
+
+  const errorCallback = (error) => {
+    console.log(error);
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  }, []);
   return (
     <>
       <Navbar />
@@ -45,16 +46,29 @@ export default function Homepage() {
           </div>
           <div className="grid grid-cols-2 gap-12 w-screen py-20 px-12">
             <div className="">
-              <Map
+              {position && (
+                <Map
+                  initialViewState={{
+                    latitude: position.latitude,
+                    longitude: position.longitude,
+                    zoom: 11,
+                  }}
+                  className="w-fit h-fit"
+                  mapStyle="mapbox://styles/mapbox/streets-v9"
+                  mapboxAccessToken={MAPBOX_TOKEN}
+                />
+              )}
+
+              {/* <Map
                 initialViewState={{
                   latitude: 43.6,
                   longitude: 3.83,
-                  zoom: 14,
+                  zoom: 11,
                 }}
                 classNames="w-fit h-fit"
                 mapStyle="mapbox://styles/mapbox/streets-v9"
                 mapboxAccessToken={MAPBOX_TOKEN}
-              ></Map>
+              ></Map> */}
               {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46156.885407463065!2d3.751516842727845!3d43.69381019443139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6aa35e69c57ef%3A0x62561cee376dd28d!2sPoissonnerie%20Gaillard!5e0!3m2!1sfr!2sfr!4v1691225913056!5m2!1sfr!2sfr"
                 className="w-full h-full"
@@ -143,4 +157,6 @@ export default function Homepage() {
       </div>
     </>
   );
-}
+};
+
+export default UserLocation;
