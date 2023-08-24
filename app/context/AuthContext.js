@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { onAuthStateChange, getAuth } from "firebase/auth";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 import firebase_app from "@/firebase/config";
 import Navbar from "@/components/Navbar";
 import "@/app/globals.css"
@@ -16,17 +16,17 @@ export const AuthContextProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(true);
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setUser(user);
+        } else {
+            setUser(null);
+        }
+        setLoading(false);
     });
 
     return () => unsubscribe();
-  }, []);
+}, []);
 
   return (
     <AuthContext.Provider value={{ user }}>

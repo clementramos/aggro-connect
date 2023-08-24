@@ -13,16 +13,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
-
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/AGGRO CONNECT - LIGHT.svg" />
       </head>
       <body className={inter.className}>
-        <AuthContextProvider>{children}
-        </AuthContextProvider>
+        <AuthContextProvider>{children}</AuthContextProvider>
       </body>
     </html>
   );
