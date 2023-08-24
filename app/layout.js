@@ -1,5 +1,4 @@
 import "./globals.css";
-import { AuthContextProvider } from "./context/AuthContext";
 import { Inter } from "next/font/google";
 import React from "react";
 
@@ -13,17 +12,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
-
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/AGGRO CONNECT - LIGHT.svg" />
       </head>
-      <body className={inter.className}>
-        <AuthContextProvider>{children}
-        </AuthContextProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

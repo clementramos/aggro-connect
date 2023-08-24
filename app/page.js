@@ -1,5 +1,5 @@
 "use client";
-import Accueil from "@/components/Accueil";
+import Accueil from "../components/Accueil";
 import { motion, useScroll } from "framer-motion";
 
 export default function Home() {

@@ -1,29 +1,12 @@
 'use client'
 import React from "react"
-import signIn from "@/firebase/auth/signin"
+import { signIn } from "next-auth/react"
 import { useRouter } from "next/router"
-import Navbar from "@/components/Navbar"
+import Navbar from "/components/Navbar"
 import Image from "next/image"
 
 export default function Login() {
-    const [email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
-    const router = useRouter()
 
-    const handleForm = async (event) => {
-        event.preventDefault()
-
-        const { result, error } = await signIn(email, password);
-
-        if (error) {
-            return console.log(error)
-        }
-
-        console.log(result)
-        return router.push("/account")
-    }
-   
-  
     return (
       <>
         <Navbar />
@@ -51,6 +34,7 @@ export default function Login() {
                 </a>
               </p>
               <button
+                onClick={() => signIn('google')}
                 aria-label="Continue with google"
                 role="button"
                 class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mb-6"

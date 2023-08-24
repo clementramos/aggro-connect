@@ -1,34 +1,11 @@
 "use client";
-import React from "react"
-import Navbar from "@/components/Navbar";
+import React from "react";
+import Navbar from "components/Navbar";
 import Image from "next/image";
-import signUp from "@/firebase/auth/signup";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
-  // const [name, setName] = React.useState("");
-  // const [lastName, setlastName] = React.useState("");
-  // const [city, setCity] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const router = useRouter();
-
-  const handleForm = async (event) => {
-    const { result, error } = await signUp(
-      // name,
-      // lastName,
-      // city,
-      email,
-      password
-    );
-
-    if (error) {
-      return console.log(error);
-    }
-    console.log(result);
-    return router.push("/account");
-  };
-
   return (
     <>
       <Navbar />
@@ -56,6 +33,7 @@ export default function Login() {
               </a>
             </p>
             <button
+              onClick={() => signIn("google")}
               aria-label="Continue with google"
               role="button"
               class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mb-6"
@@ -66,9 +44,7 @@ export default function Login() {
                 width={20}
                 height={20}
               />
-              <p class="text-base font-medium ml-4 text-gray-700">
-                Google
-              </p>
+              <p class="text-base font-medium ml-4 text-gray-700">Google</p>
             </button>
             <button
               aria-label="Continue with apple"
@@ -76,9 +52,7 @@ export default function Login() {
               class="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
             >
               <Image src="/apple-logo.png" alt="apple" width={20} height={20} />
-              <p class="text-base font-medium ml-4 text-gray-700">
-                Apple
-              </p>
+              <p class="text-base font-medium ml-4 text-gray-700">Apple</p>
             </button>
             <div class="w-full flex items-center justify-between py-5 z-50">
               <hr class="w-full bg-black h-0.5" />
@@ -88,7 +62,7 @@ export default function Login() {
               <hr class="w-full bg-black h-0.5" />
             </div>
 
-            <form className="column max-w-5xl" onSubmit={handleForm}>
+            <form className="column max-w-5xl">
               {/* <label
                 htmlFor="name"
                 className="text-left block text-base font-medium text-black"
