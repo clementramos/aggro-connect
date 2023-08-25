@@ -1,7 +1,10 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import React from "react";
-
+import { getServerSession } from "next-auth";
+import SessionProvider from "./SessionProvider";
+import Accueil from "../components/Accueil";
+import Login from "./signUp/page";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -11,13 +14,22 @@ export const metadata = {
   icon: "/AGGRO CONNECT - LIGHT.svg",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = getServerSession;
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/AGGRO CONNECT - LIGHT.svg" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <SessionProvider session={session}>
+          {!session ? (
+            <Login/>
+          ): (
+            <Accueil/>
+          )}
+        </SessionProvider>
+      </body>
     </html>
   );
 }
